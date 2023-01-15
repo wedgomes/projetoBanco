@@ -3,60 +3,35 @@
 {% block title %}Agência{% endblock %}
 
 
-
 {% block body %}
 
-{# <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> #}
 <div class='container'>
-    <h1>Criar Agência</h1>
+    <h1>Agências</h1><br>
 
-    <form class="mb-4 col-md-4">
-        <label class="form-label">Selecione o</label>
-        <select class="form-select" aria-label="Default select example">
-        <option selected>Gerente</option>
-        <option value="1">Um</option>
-        <option value="2">Dois</option>
-        <option value="3">Três</option>
-        </select>
+     {# <tr>
+            <th>ID</th>
+            <th>Número</th>
+            <th>Agências</th>
+        </tr> #}
+    {% for agencia in agencias  %}
+       <div class="form-control"> 
+            <a type"button" class="agc btn btn-success" href="{{path('agencia_add')}}">Editar</a>
 
-        <div class="mb-3">
-            <label class="form-label">Telefone:</label>
-            <input type="text" class="form-control" id="telefone" aria-describedby="telefoneHelp">
-            {# <div class="form-text">Digite o telefone da Agência</div> #}
+            <div class="agc form-control"> <b>{{ agencia.nome }}</b> </div>
+            <div > Número da Agência: {{ agencia.numero }} </div>
+            <div > Endereço: {{ agencia.endereco }} </div>
+            <div > Telefone: {{ agencia.telefone }} </div>
         </div>
-            
-            <h5 class="mb-3">Endereço</h5>
-            <div class="mb-3">
-                <label class="form-label">Rua</label>
-                <input type="text" class="form-control" id="rua">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Número</label>
-                <input type="text" class="form-control" id="numero">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="bairro">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="cidade">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Estado</label>
-                <input type="text" class="form-control" id="estado">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cep">
-            </div>
+        
+        <br>
+        
+    {% endfor %}
 
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            
-    </form>
+
+    <div class="mb-5">
+            <a type"button" class="btn btn-primary" href="{{path('agencia_add')}}">Criar Nova Agência</a>
+    </div><br>
+
 </div>
 
 {% endblock %}
