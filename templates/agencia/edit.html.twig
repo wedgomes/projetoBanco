@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Agência{% endblock %}
+
+
+{% block body %}
+    <div class='container'>
+    <h1>Editar Agência</h1>
+    {# {{ form(form) }} #}
+    {{ form_start(form) }}
+        <div class="mb-3">{{ form_errors(form)}}</div>
+        <div class="mb-3">
+            {{ form_label(form.numero, 'Número') }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(form.numero) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.nome, 'Nome') }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(form.nome)}}
+        </div> 
+        <div class="mb-3">
+            {{ form_label(form.telefone, 'Telefone') }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(form.telefone)}}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.endereco, 'Endereço') }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(form.endereco)}}
+        </div>
+        <div class="mb-3">
+            <button type"submit" class="btn btn-primary" >Salvar</button>
+        </div>
+   {{ form_end(form) }}
+</div>
+
+{% endblock %}

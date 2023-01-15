@@ -15,12 +15,14 @@
         </tr> #}
     {% for agencia in agencias  %}
        <div class="form-control"> 
-            <a type"button" class="agc btn btn-success" href="{{path('agencia_add')}}">Editar</a>
+            <a type"button" class="agc btn btn-info" href="{{path('agencia_edit', {agencia:agencia.id})}}">Editar</a>
+            <a type"button" class="agc btn btn-secondary" href="{{path('agencia_delete', {agencia:agencia.id})}}">Deletar</a>
 
             <div class="agc form-control"> <b>{{ agencia.nome }}</b> </div>
             <div > Número da Agência: {{ agencia.numero }} </div>
             <div > Endereço: {{ agencia.endereco }} </div>
-            <div > Telefone: {{ agencia.telefone }} </div>
+            <div > Telefone: {{ agencia.telefone }} </div><br>
+            Gerente:
         </div>
         
         <br>
