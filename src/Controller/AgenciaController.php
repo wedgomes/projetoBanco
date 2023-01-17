@@ -15,59 +15,58 @@ use Symfony\Component\Routing\Annotation\Route;
 class AgenciaController extends AbstractController
 {
     #[Route('/agencia', name: 'app_agencia')]
-    public function index(AgenciaRepository $agenciaRepository): Response{
+    public function index(AgenciaRepository $agenciaRepository): Response
+    {
 
         $agencias = $agenciaRepository->findAll();
 
         return $this->render('agencia/index.html.twig', ['controller_name' => 'Agência', 'agencias' => $agencias]);
     }
-    
+
     #[Route('/agencia/add', name: 'agencia_add')]
-    public function add(Request $request, AgenciaRepository $agenciaRepository, EntityManagerInterface $entityManagerInterface) : Response{
-        // $agencia = new Agencia();
+    public function add(Request $request, AgenciaRepository $agenciaRepository): Response
+    {
+
         $formAgencia = $this->createForm(AgenciaType::class, new Agencia());
 
-            $formAgencia->handleRequest($request);
-            if ($formAgencia->isSubmitted() && $formAgencia->isValid()){
-                $agencia = $formAgencia->getData();
-                // $entityManagerInterface->persist($agencia);
-                // $agencia->setCreated(new \DateTime());
-                $agenciaRepository->save($agencia, true);
-                // dd('foi submetido!');
-                $this->addFlash('success', 'Sua Agência foi cadastada!');
-                return $this->redirect('/agencia');
-            }
+        $formAgencia->handleRequest($request);
+
+        if ($formAgencia->isSubmitted() && $formAgencia->isValid()) {
+            $agencia = $formAgencia->getData();
+            $agenciaRepository->save($agencia, true);
+
+            return $this->redirect('/agencia');
+        }
 
         return $this->render('agencia/add.html.twig', ['form' => $formAgencia]);
     }
 
     #[Route('/agencia/{agencia}/edit', name: 'agencia_edit')]
-    public function edit(Agencia $agencia, Request $request, AgenciaRepository $agenciaRepository) : Response{
+    public function edit(Agencia $agencia, Request $request, AgenciaRepository $agenciaRepository): Response
+    {
 
         $formAgencia = $this->createForm(AgenciaType::class, $agencia);
 
-            $formAgencia->handleRequest($request);
-            if ($formAgencia->isSubmitted() && $formAgencia->isValid()){
-                $agencia = $formAgencia->getData();
-                // $entityManagerInterface->persist($agencia);
-                // $agencia->setCreated(new \DateTime());
-                $agenciaRepository->save($agencia, true);
-                // dd('foi submetido!');
-                $this->addFlash('success', 'Sua Agência foi Atualizada!');
-                return $this->redirect('/agencia');
-            }
+        $formAgencia->handleRequest($request);
+
+        if ($formAgencia->isSubmitted() && $formAgencia->isValid()) {
+            $agencia = $formAgencia->getData();
+            $agenciaRepository->save($agencia, true);
+
+            return $this->redirect('/agencia');
+        }
 
         return $this->render('agencia/edit.html.twig', ['form' => $formAgencia]);
     }
 
 
     #[Route('/agencia/{agencia}/delete', name: 'agencia_delete')]
-    public function delete(Agencia $agencia, Request $request, AgenciaRepository $agenciaRepository) : Response{
+    public function delete(Agencia $agencia, Request $request, AgenciaRepository $agenciaRepository): Response
+    {
 
         $agenciaRepository->remove($agencia, true);
-        $this->addFlash('success', 'Sua Agência foi excluída!');
         return $this->redirect('/agencia');
-            
+
 
         return $this->render('agencia/index.html.twig');
     }

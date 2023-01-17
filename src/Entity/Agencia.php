@@ -25,6 +25,9 @@ class Agencia
     #[ORM\Column(length: 255)]
     private ?string $nome = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Gerente $gerente = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Agencia
     public function setNome(string $nome): self
     {
         $this->nome = $nome;
+
+        return $this;
+    }
+
+    public function getGerente(): ?Gerente
+    {
+        return $this->gerente;
+    }
+
+    public function setGerente(?Gerente $gerente): self
+    {
+        $this->gerente = $gerente;
 
         return $this;
     }

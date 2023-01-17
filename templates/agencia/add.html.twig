@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Criar Agência{% endblock %}
+{% block title %}Criar Agência
+{% endblock %}
 
 
 {% block body %}
 
 
-<div class='container'>
-    <h1>Criar Nova Agência</h1>
-    {# {{ form(form) }} #}
-    {{ form_start(form) }}
+	<div class='container'>
+		<h1>Criar Nova Agência</h1>
+
+{{ form_start(form) }}
         <div class="mb-3">{{ form_errors(form)}}</div>
         <div class="mb-3">
             {{ form_label(form.numero, 'Número') }}
@@ -39,6 +40,37 @@
             <button type"submit" class="btn btn-primary" >Salvar</button>
         </div>
    {{ form_end(form) }}
-</div>
+		{# <form class="row g-3">
+			<div class="row g-3">
+
+				{{ form_start(form) }}
+                    <div class="col-md-4"> 
+                        {{ form_label(form.numero, 'Número da Agência', {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.numero, {'attr': {'class': 'form-control '}})}}
+                    </div>
+
+                    <div class="col-md-8"> 
+                        {{ form_label(form.nome, 'Nome', {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.nome, {'attr': {'class': 'form-control'}})}}
+                    </div>
+                    
+                    <div class="col-md-4"> 
+                        {{ form_label(form.telefone, 'Telefone', {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.telefone, {'attr': {'class': 'form-control'}})}}
+                    </div>
+                    
+                    <div class="col-md-8"> 
+                        {{ form_label(form.endereco, 'Endereço', {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.endereco, {'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <br>
+
+                    <div class="mb-3"> 
+                        <button type"submit" class="btn btn-primary">Salvar</button>
+                    </div>
+				{{ form_end(form) }}
+			</div>
+		</form> #}
+	</div>
 
 {% endblock %}

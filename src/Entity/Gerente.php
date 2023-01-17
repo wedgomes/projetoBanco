@@ -16,6 +16,9 @@ class Gerente
     #[ORM\Column(length: 255)]
     private ?string $nome = null;
 
+    #[ORM\OneToOne(inversedBy: 'gerente', cascade: ['persist', 'remove'])]
+    private ?Agencia $agencia = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Gerente
     public function setNome(string $nome): self
     {
         $this->nome = $nome;
+
+        return $this;
+    }
+
+    public function getAgencia(): ?Agencia
+    {
+        return $this->agencia;
+    }
+
+    public function setAgencia(?Agencia $agencia): self
+    {
+        $this->agencia = $agencia;
 
         return $this;
     }

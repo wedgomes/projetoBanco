@@ -3,5 +3,23 @@
 {% block title %}Hello ContaController!{% endblock %}
 
 {% block body %}
+<div class='container'>
+    <h1>Contas</h1><br>
+
+    {% for conta in contas  %}
+       <div class="form-control"> 
+            {# <a type"button" class="agc btn btn-info" href="{{path('agencia_edit', {agencia:agencia.id})}}">Editar</a>
+            <a type"button" class="agc btn btn-secondary" href="{{path('agencia_delete', {agencia:agencia.id})}}">Deletar</a> #}
+
+            <div class="agc form-control"> <b>{{ conta.numero }}</b> </div>
+            <div > Saldo: {{ conta.saldo }} </div>
+            <div > Ativa: {{ conta.ativa }} </div>
+             {# <div > Agência: {{ agencia.nome }} </div> #}
+            
+        </div><br>
+    {% endfor %}
+        
+
+</div>
 
 {% endblock %}

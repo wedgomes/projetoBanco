@@ -22,6 +22,9 @@ class Conta
     #[ORM\Column]
     private ?bool $ativa = null;
 
+    #[ORM\ManyToOne(inversedBy: 'conta')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Conta
     public function setAtiva(bool $ativa): self
     {
         $this->ativa = $ativa;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
