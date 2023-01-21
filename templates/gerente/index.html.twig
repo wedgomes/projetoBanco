@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GerenteController!{% endblock %}
+{% block title %}Gerentes{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,8 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/wedson.gomes/Documents/Cin/Programação Avançada PHP/sgab/bancowg/src/Controller/GerenteController.php'|file_link(0) }}">src/Controller/GerenteController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/wedson.gomes/Documents/Cin/Programação Avançada PHP/sgab/bancowg/templates/gerente/index.html.twig'|file_link(0) }}">templates/gerente/index.html.twig</a></code></li>
-    </ul>
+   {# {% for gerente in gerentes %}
+        Gerente: {{ gerente.nome }}
+   {% endfor %} #}
 </div>
 {% endblock %}

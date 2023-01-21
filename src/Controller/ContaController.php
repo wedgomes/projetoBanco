@@ -32,13 +32,14 @@ class ContaController extends AbstractController
             $formConta->handleRequest($request);
             $userForm->handleRequest($request);
 
-            if (($formConta->isSubmitted() && $formConta->isValid()) && ($userForm->isSubmitted() && $userForm->isValid())){
+            if (($formConta->isSubmitted() && $formConta->isValid() && $userForm->isSubmitted() && $userForm->isSubmitted())){
                 $usuario = $userForm->getData();
-                
-                $userRepository->save($usuario, true);
-
                 $conta = $formConta->getData();
-                $contaRepository->save($conta, true);
+
+                $userRepository->save($usuario, true);
+                $contaRepository->add($usuario, true);
+                $contaRepository->add($conta, true);
+                
                 return $this->redirect('index/index.html.twig');
             }
 
